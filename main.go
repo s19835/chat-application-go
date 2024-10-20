@@ -1,9 +1,18 @@
 package main
 
 import (
+	"html/template"
 	"log"
 	"net/http"
+	"sync"
 )
+
+// Create new type for handling templates
+type templateHandler struct {
+	once     sync.Once
+	filename string
+	templ    *template.Template
+}
 
 // Listen to the path using net/http pkg
 func main() {
